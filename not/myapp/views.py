@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.http import JsonResponse
 from ultralytics import YOLO
 import os
 from django.conf import settings
@@ -36,16 +35,12 @@ def upload_images(request):
                     image_model_instance.img_model.save(image_name, File(f), save=True)
 
                 image_model_instance.save()  # Сохраняем экземпляр ImagesModel
-            else:
-                print('У тебя все получится')
+
             image = Images.objects.get(img=f'images/{image_name}')
-            print('#################################')
-            print(image.img)
+
             image_model = ImagesModel.objects.get(image=image)
-            print(image_model.img_model)
-            print(str(image_model.img_model)[7:])
-            # image_model = ImagesModel.objects.all().first()
-            # print(image_model.img_model)
+
+
             return render(request, 'index.html', {'form': form, 'image_model': image_model, 'image': image})
     else:
         form = ImageForm()
