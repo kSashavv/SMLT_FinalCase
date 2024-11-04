@@ -1,28 +1,11 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="ru">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Сайт обработки изображений</title>
-    <link rel="stylesheet" href="{% static 'style.css' %}">
-</head>
-
-<body>
-<header>
-    <nav>
-        <ul>
-            <li><a href="index.html">Главная</a></li>
-            <li><a href="login.html">Войти</a></li>
-            <li><a href="profile.html">Личный кабинет</a></li>
-        </ul>
-    </nav>
-</header>
+{% extends 'base.html' %}
+{% block title %}
+Главная страница
+{% endblock %}
+{% block content %}
 <main>
     <section>
         <h1>Загрузка и обработка изображений</h1>
-<!--        <h1>Upload Image</h1>-->
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}
@@ -43,10 +26,4 @@
         {% endif %}
     </section>
 </main>
-<footer>
-    <p>&copy; 2024 Сайт обработки изображений</p>
-</footer>
-
-</body>
-
-</html>
+{% endblock %}

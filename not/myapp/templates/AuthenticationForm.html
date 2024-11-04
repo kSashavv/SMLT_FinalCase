@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Войти
+{% endblock %}
+{% block content %}
+<body>
+    <form method="post" class="centered-form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Войти</button>
+</form>
+</body>
+{% endblock %}

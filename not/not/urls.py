@@ -18,11 +18,15 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from myapp.views import upload_images
+from myapp.views import upload_images, UserCreation, Authenticate, personal_account, _logout
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', upload_images, name='index')
+    path('', upload_images, name='index'),
+    path('regis/', UserCreation, name='regis'),
+    path('login/', Authenticate, name='login'),
+    path('personal_account/', personal_account, name='personal_account'),
+    path('logout/', _logout, name='logout'),
 ]
 
 if settings.DEBUG:
